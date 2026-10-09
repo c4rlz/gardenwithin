@@ -16,24 +16,26 @@ const { tools } = site;
       <h2>{tools.why.title}</h2>
       <p>{tools.why.body}</p>
     </div>
-    <Image src={photo} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo" />
+    <Image src={photo} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo arch" />
   </section>
 
-  <section class="section wrap split">
-    <Image
-      src={template}
-      alt="The Garden Within template in Notion, with Daily Seeds, Weekly Roots and Blossoms"
-      widths={[600, 1200]} width={1200} quality={70}
-      sizes="(min-width: 52rem) 50vw, 90vw"
-      class="photo"
-    />
-    <div>
-      <h2>{tools.template.title}</h2>
-      <p class="lede">{tools.template.tagline}</p>
-      <ul class="parts">{tools.template.parts.map((part) => <li>{part}</li>)}</ul>
-      <a class="button" href={tools.template.href}>{tools.template.cta}</a>
-    </div>
-  </section>
+  <div class="band">
+    <section class="section wrap split">
+      <Image
+        src={template}
+        alt="The Garden Within template in Notion, with Daily Seeds, Weekly Roots and Blossoms"
+        widths={[600, 1200]} width={1200} quality={70}
+        sizes="(min-width: 52rem) 50vw, 90vw"
+        class="photo screenshot"
+      />
+      <div>
+        <h2>{tools.template.title}</h2>
+        <p class="lede">{tools.template.tagline}</p>
+        <ul class="parts">{tools.template.parts.map((part) => <li>{part}</li>)}</ul>
+        <a class="button" href={tools.template.href}>{tools.template.cta}</a>
+      </div>
+    </section>
+  </div>
 
   <section class="section prose">
     <h2>{tools.more.title}</h2>
@@ -42,10 +44,13 @@ const { tools } = site;
 </Base>
 
 <style>
-  .split { display: grid; gap: 2rem 4rem; align-items: center; padding-top: 2rem; }
+  .split { display: grid; gap: 2.5rem 5rem; align-items: center; }
+  .split:first-child { padding: clamp(1rem, 3vw, 2.5rem) var(--gutter) clamp(3rem, 8vw, 6rem); }
   .split h2:first-child { margin-top: 0; }
+  .screenshot { box-shadow: 0 1px 2px hsl(108 10% 20% / 0.06), 0 12px 32px -8px hsl(108 10% 20% / 0.18); }
   .parts { list-style: none; padding: 0; margin: 0 0 2rem; }
-  .parts li { padding: 0.35rem 0; }
+  .parts li { padding: 0.6rem 0; border-bottom: 1px solid var(--rule); }
+  .parts li:first-child { border-top: 1px solid var(--rule); }
   @media (min-width: 52rem) {
     .split { grid-template-columns: 1fr 1fr; }
   }

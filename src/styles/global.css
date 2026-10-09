@@ -7,12 +7,13 @@
   --terracotta: hsl(15 47% 60%);
 
   --bg: var(--cream);
-  --surface: hsl(39 40% 90%);
+  --surface: hsl(39 38% 90%);
+  --field: hsl(40 50% 97%);
   --text: var(--forest);
-  --muted: hsl(95 9% 34%);
+  --muted: hsl(95 8% 36%);
   --accent: var(--sage);
   --link: hsl(15 45% 42%);
-  --rule: hsl(108 10% 20% / 0.85);
+  --rule: hsl(97 12% 67% / 0.7);
 
   --font-display: 'Cormorant Garamond Variable', Garamond, Georgia, serif;
   --font-serif: 'EB Garamond Variable', Garamond, Georgia, serif;
@@ -21,7 +22,7 @@
   --measure: 38rem;
   --wide: 68rem;
   --gutter: clamp(1rem, 4vw, 2rem);
-  --radius: 4px;
+  --radius: 3px;
 
   color-scheme: light;
 }
@@ -36,13 +37,17 @@ body {
   color: var(--text);
   font-family: var(--font-serif);
   font-size: clamp(1.0625rem, 0.4vw + 1rem, 1.1875rem);
-  line-height: 1.65;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
+
+::selection { background: hsl(97 12% 67% / 0.45); }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
   margin: 2em 0 0.5em;
   text-wrap: balance;
 }
@@ -52,8 +57,14 @@ h3, h4 { font-size: 1.6rem; }
 
 p { margin: 0 0 1.1em; }
 
-a { color: var(--link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-a:hover { text-decoration-thickness: 2px; }
+a {
+  color: var(--link);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+  text-decoration-color: hsl(15 45% 42% / 0.4);
+  transition: text-decoration-color 0.2s;
+}
+a:hover { text-decoration-color: currentColor; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -78,26 +89,41 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
   margin: 0 0 0.75rem;
 }
 
-.lede { font-size: 1.15rem; }
+.lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 1vw + 1rem, 1.65rem);
+  line-height: 1.4;
+  color: var(--muted);
+}
 
 .button {
   display: inline-block;
-  padding: 1rem 1.3rem;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-  background: none;
-  color: var(--accent);
+  margin-top: 0.75rem;
+  padding: 0.95rem 1.75rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--sage);
+  color: var(--cream);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.25s;
 }
-.button:hover { background: var(--accent); color: var(--bg); }
+.button:hover { background: var(--forest); }
 
 .section { padding-block: clamp(3rem, 8vw, 6rem); }
-.section + .section { border-top: 1px solid var(--rule); }
+
+/* A full-width tinted band, used to set a section apart instead of a rule. */
+.band { background: var(--surface); }
 
 .photo { border-radius: var(--radius); width: 100%; object-fit: cover; }
+/* Arched top, like a garden gate. Oversized radii collapse to a semicircle. */
+.arch { border-radius: 100vw 100vw var(--radius) var(--radius); }
 
 .signoff { width: 9rem; margin: 2rem 0 0; }
 

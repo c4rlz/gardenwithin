@@ -20,17 +20,20 @@ const latest = (await getPosts()).slice(0, 2);
       {home.intro.map((p) => <p>{p}</p>)}
       <a class="button" href="/blog">Read the Field Notes</a>
     </div>
-    <Image src={hero} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 50vw, 90vw" class="photo hero-img" loading="eager" />
+    <Image src={hero} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 50vw, 90vw" class="photo arch hero-img" loading="eager" />
   </section>
 
-  <section class="section wrap split notes">
-    <div class="notes-intro">
-      <h2>{home.notes.title}</h2>
-      {home.notes.body.map((p) => <p>{p}</p>)}
-      <a class="button" href="/blog">Read the Field Notes</a>
-    </div>
-    <PostGrid posts={latest} />
-  </section>
+  <div class="band">
+    <section class="section wrap split notes">
+      <div class="notes-intro">
+        <p class="eyebrow">Latest writing</p>
+        <h2>{home.notes.title}</h2>
+        {home.notes.body.map((p) => <p>{p}</p>)}
+        <a class="button" href="/blog">All Field Notes</a>
+      </div>
+      <PostGrid posts={latest} />
+    </section>
+  </div>
 
   <section class="section wrap split about">
     <Image src={about} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo" />
@@ -45,7 +48,8 @@ const latest = (await getPosts()).slice(0, 2);
 <style>
   .split { display: grid; gap: 2.5rem 4rem; align-items: center; }
   .split h1, .split h2 { margin-top: 0; }
-  .hero-img { aspect-ratio: 7 / 8; }
+  .hero { padding-top: clamp(1rem, 3vw, 2.5rem); }
+  .hero-img { aspect-ratio: 4 / 5; max-height: 40rem; }
   .notes-intro { max-width: 26rem; }
   @media (min-width: 52rem) {
     .hero { grid-template-columns: 1fr 1fr; }
