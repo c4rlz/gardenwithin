@@ -2,7 +2,7 @@
 
 The website for [gardenwithin.ca](https://gardenwithin.ca): field notes on living in rhythm with my inner seasons, plus tools and a way to work with me. Moved off Squarespace in 2026.
 
-Built with [Astro](https://astro.build) and plain CSS. No client-side JavaScript.
+Built with [Astro](https://astro.build) and plain CSS. The only JavaScript is a few lines that fade photos in as they load; page transitions use the browser's built-in view transitions.
 
 ## Run it
 
@@ -46,11 +46,16 @@ Full-size photos are fine; the build resizes and compresses them.
 | `src/content/blog/` | Field Notes, one Markdown file per post (filename = URL) |
 | `src/assets/blog/` | Field Notes photos (Pages CMS uploads land here) |
 | `.pages.yml` | Pages CMS editor setup |
-| `src/pages/` | One file per page; `blog/[slug].astro` renders posts |
-| `src/styles/global.css` | Palette (from the old Squarespace theme), type, light and dark mode |
+| `src/pages/` | One file per page; `blog/[slug].astro` renders posts, `blog/page/[page].astro` the list pages after the first |
+| `src/lib/posts.ts` | Post helpers: sorting, Field Notes per page (`PAGE_SIZE`), card photo sizes |
+| `src/styles/global.css` | Palette and fonts (from the old Squarespace theme), buttons, photo fade-in, page transitions |
 | `src/assets/` | Photos used on pages |
 | `public/_redirects` | Old Squarespace URLs that moved (post URLs didn't) |
 
 ## Deploy
 
-Netlify: connect the repo; `netlify.toml` sets the build command and output folder, and Netlify reads `.nvmrc` for the Node version. The contact form uses Netlify Forms, so it only works on Netlify. Turn on email notifications under Forms in the Netlify dashboard.
+Live at [gardenwithin.netlify.app](https://gardenwithin.netlify.app). Every push to `main` rebuilds and publishes the site; the **Deploys** tab in Netlify has build logs and one-click rollback.
+
+`netlify.toml` sets the build command and output folder, and Netlify reads `.nvmrc` for the Node version. Pages build as `blog.html`-style files so URLs have no trailing slash, matching the old Squarespace ones.
+
+The contact form uses Netlify Forms, so it only works on Netlify: turn on form detection and email notifications under **Forms** in the Netlify dashboard.
