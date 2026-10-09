@@ -1,0 +1,118 @@
+/* Palette carried over from the Squarespace theme: cream, sage, deep green, terracotta. */
+:root {
+  --cream: hsl(39 44% 94%);
+  --sage: hsl(95 11% 38%);
+  --sage-soft: hsl(97 12% 67%);
+  --forest: hsl(108 10% 20%);
+  --terracotta: hsl(15 47% 60%);
+
+  --bg: var(--cream);
+  --surface: hsl(39 40% 90%);
+  --text: var(--forest);
+  --muted: hsl(95 9% 34%);
+  --accent: var(--sage);
+  --link: hsl(15 45% 42%);
+  --rule: hsl(97 12% 67% / 0.6);
+
+  --font-serif: 'EB Garamond Variable', Garamond, Georgia, serif;
+  --font-sans: 'Source Sans 3 Variable', system-ui, sans-serif;
+
+  --measure: 38rem;
+  --wide: 68rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --radius: 4px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(108 10% 12%);
+    --surface: hsl(108 10% 16%);
+    --text: hsl(39 35% 88%);
+    --muted: hsl(97 12% 67%);
+    --accent: hsl(97 14% 62%);
+    --link: hsl(15 55% 70%);
+    --rule: hsl(97 12% 67% / 0.25);
+  }
+  .signoff { filter: invert(1) brightness(1.2); }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: clamp(1.0625rem, 0.4vw + 1rem, 1.1875rem);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 2em 0 0.5em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.25rem, 5vw + 1rem, 3.5rem); margin-top: 0; }
+h2 { font-size: clamp(1.75rem, 2vw + 1rem, 2.25rem); }
+h3, h4 { font-size: 1.5rem; }
+
+p { margin: 0 0 1.1em; }
+
+a { color: var(--link); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+.skip-link:focus { left: var(--gutter); top: 0.5rem; background: var(--bg); padding: 0.5rem 1rem; z-index: 10; }
+
+.wrap { max-width: var(--wide); margin: 0 auto; padding: 0 var(--gutter); }
+.prose { max-width: var(--measure); margin: 0 auto; padding: 0 var(--gutter); }
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.lede { font-family: var(--font-serif); font-size: 1.4rem; line-height: 1.4; color: var(--muted); }
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+.button:hover { background: var(--accent); color: var(--bg); }
+
+.section { padding: clamp(3rem, 8vw, 6rem) 0; }
+.section + .section { border-top: 1px solid var(--rule); }
+
+.photo { border-radius: var(--radius); width: 100%; object-fit: cover; }
+
+.signoff { width: 9rem; margin: 2rem 0 0; }
+
+/* The handwritten sign-off image inside a post. */
+.prose img[alt='Xo, C'] { width: 9rem; }
+@media (prefers-color-scheme: dark) {
+  .prose img[alt='Xo, C'] { filter: invert(1) brightness(1.2); }
+}

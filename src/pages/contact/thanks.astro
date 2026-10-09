@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../content/site';
+---
+
+<Base title="Thank you">
+  <section class="prose section">
+    <h1>{site.contact.thanks.title}</h1>
+    <p>{site.contact.thanks.body}</p>
+    <p><a href="/blog">Back to the Field Notes</a></p>
+  </section>
+</Base>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostGrid from '../../components/PostGrid.astro';
+import { site } from '../../content/site';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="Field Notes" description={site.home.notes.body[0]}>
+  <div class="wrap">
+    <header class="intro">
+      <h1>Field Notes</h1>
+      {site.home.notes.body.map((p) => <p>{p}</p>)}
+    </header>
+    <PostGrid posts={posts} />
+  </div>
+</Base>
+
+<style>
+  .intro { max-width: var(--measure); padding: 2rem 0 3rem; }
+  .intro p { color: var(--muted); }
+</style>

@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { site } from '../../content/site';
+import photo from '../../assets/contact.jpg';
+---
+
+<Base title="Contact">
+  <section class="wrap split">
+    <Image src={photo} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo" />
+    <div>
+      <h1>{site.contact.title}</h1>
+      <!-- Netlify Forms: submissions show in the Netlify dashboard and can be emailed on. -->
+      <form name="contact" method="POST" action="/contact/thanks" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+        <label>Name <input name="name" autocomplete="name" required /></label>
+        <label>Email <input type="email" name="email" autocomplete="email" required /></label>
+        <label>Message <textarea name="message" rows="6" required></textarea></label>
+        <button class="button" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .split { display: grid; gap: 2rem 4rem; align-items: start; padding-top: 2rem; }
+  @media (min-width: 52rem) {
+    .split { grid-template-columns: 2fr 3fr; }
+  }
+  form { display: grid; gap: 1.25rem; max-width: 32rem; }
+  label { display: grid; gap: 0.35rem; font-size: 0.95rem; color: var(--muted); }
+  input, textarea {
+    font: inherit;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: 0.65rem 0.8rem;
+  }
+  button { justify-self: start; background: none; cursor: pointer; font: inherit; }
+  .hidden { position: absolute; left: -9999px; }
+</style>

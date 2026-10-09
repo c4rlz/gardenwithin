@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+import photo from '../assets/tools.jpg';
+import template from '../assets/garden-within-template.png';
+
+const { tools } = site;
+---
+
+<Base title="Tools" description={tools.lede}>
+  <section class="wrap split">
+    <div>
+      <h1>{tools.title}</h1>
+      <p class="lede">{tools.lede}</p>
+      <h2>{tools.why.title}</h2>
+      <p>{tools.why.body}</p>
+    </div>
+    <Image src={photo} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo" />
+  </section>
+
+  <section class="section wrap split">
+    <Image
+      src={template}
+      alt="The Garden Within template in Notion, with Daily Seeds, Weekly Roots and Blossoms"
+      widths={[600, 1200]} width={1200} quality={70}
+      sizes="(min-width: 52rem) 50vw, 90vw"
+      class="photo"
+    />
+    <div>
+      <h2>{tools.template.title}</h2>
+      <p class="lede">{tools.template.tagline}</p>
+      <ul class="parts">{tools.template.parts.map((part) => <li>{part}</li>)}</ul>
+      <a class="button" href={tools.template.href}>{tools.template.cta}</a>
+    </div>
+  </section>
+
+  <section class="section prose">
+    <h2>{tools.more.title}</h2>
+    {tools.more.body.map((p) => <p>{p}</p>)}
+  </section>
+</Base>
+
+<style>
+  .split { display: grid; gap: 2rem 4rem; align-items: center; padding-top: 2rem; }
+  .split h2:first-child { margin-top: 0; }
+  .parts { list-style: none; padding: 0; margin: 0 0 2rem; }
+  .parts li { padding: 0.35rem 0; }
+  @media (min-width: 52rem) {
+    .split { grid-template-columns: 1fr 1fr; }
+  }
+</style>

@@ -1,0 +1,4 @@
+# Old Squarespace URLs → new homes. Post URLs are unchanged (/blog/<slug>).
+/home              /          301
+/blog  format=rss  /rss.xml   301
+/cart              /          301
