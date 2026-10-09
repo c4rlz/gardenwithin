@@ -36,7 +36,9 @@ draft: true
 Write here. Images: ![alt text](../../assets/blog/another-photo.jpg)
 ```
 
-Full-size photos are fine; the build resizes and compresses them.
+Full-size photos are fine. After each save, a GitHub Action (`.github/workflows/tidy-photos.yml`) names a post's photos after it (`my-new-note.jpg` for the cover, then `my-new-note-2.jpg`… for photos in the post), updates the post to match, and shrinks originals to 2400px on the long side. If Pages CMS then says the post changed, reload it. To run the same tidy-up locally: `npm run photos`. The build makes the small compressed copies visitors actually download.
+
+Every post ends with the handwritten "Xo, C" automatically; no need to add it.
 
 ## Where things live
 

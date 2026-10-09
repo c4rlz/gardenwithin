@@ -148,5 +148,3 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
 
 .signoff { width: 9rem; margin: 2rem 0 0; }
 
-/* The handwritten sign-off image inside a post. */
-.prose img[alt='Xo, C'] { width: 9rem; }

@@ -3,6 +3,7 @@ import { Image, getImage } from 'astro:assets';
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { cardImage, coverTransitionName, formatDate, getPosts } from '../../lib/posts';
+import signoff from '../../assets/home-signoff.png';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -37,6 +38,7 @@ const placeholder = `image-set(url("${cardUrl('400w')}") 1x, url("${cardUrl('600
     </div>
     <div class="prose body">
       <Content />
+      <Image src={signoff} alt="Xo, C" class="signoff" />
     </div>
   </article>
 

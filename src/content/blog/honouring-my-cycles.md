@@ -31,5 +31,3 @@ That is what I am exploring now. Being gentle with myself. Doing right by my ner
 I am excited to fully meet myself.
 
 Unarmoured and whole.
-
-![Xo, C](../../assets/blog/xo-c.png)
