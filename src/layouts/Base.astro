@@ -13,8 +13,10 @@ interface Props {
 
 const { title, description = site.description, image } = Astro.props;
 const fullTitle = title ? `${title} — ${site.name}` : site.name;
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Pages build to <name>.html (see astro.config.mjs) but are served without the extension.
+const path = Astro.url.pathname.replace(/(\/index)?\.html$/, '').replace(/\/$/, '') || '/';
+const canonical = new URL(path, Astro.site);
+const current = path;
 const isCurrent = (href: string) => (href === '/' ? current === '/' : current.startsWith(href));
 ---
 
@@ -35,6 +37,13 @@ const isCurrent = (href: string) => (href === '/' ? current === '/' : current.st
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={site.name} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline>
+      // Fade photos in as they arrive instead of letting them pop in. Without JS they show normally.
+      document.documentElement.classList.add('js');
+      const reveal = (img) => img.classList.add('loaded');
+      document.addEventListener('load', (e) => e.target.tagName === 'IMG' && reveal(e.target), true);
+      document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('img').forEach((img) => img.complete && reveal(img)));
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -75,6 +84,7 @@ const isCurrent = (href: string) => (href === '/' ? current === '/' : current.st
     gap: 0.9rem;
     padding: clamp(1.75rem, 4vw, 2.75rem) var(--gutter) clamp(1.5rem, 3vw, 2.25rem);
     text-align: center;
+    view-transition-name: site-header; /* stays put while the page crossfades */
   }
   .brand {
     font-family: var(--font-display);

@@ -121,7 +121,23 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
 /* A full-width tinted band, used to set a section apart instead of a rule. */
 .band { background: var(--surface); }
 
-.photo { border-radius: var(--radius); width: 100%; object-fit: cover; }
+.photo { border-radius: var(--radius); width: 100%; object-fit: cover; background: var(--surface); }
+
+/* Photos fade in once loaded, over a soft placeholder tint (the .js class comes from Base.astro). */
+.js .photo, .js .prose img { opacity: 0; transition: opacity 0.7s ease; }
+.js .photo.loaded, .js .prose img.loaded { opacity: 1; }
+
+/* Gentle crossfade between pages (browsers without support just navigate normally). */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 0.25s ease both fade-out; }
+::view-transition-new(root) { animation: 0.45s ease both fade-in; }
+@keyframes fade-out { to { opacity: 0; } }
+@keyframes fade-in { from { opacity: 0; transform: translateY(6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .photo, .js .prose img { transition: none; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}
 /* Arched top, like a garden gate. Oversized radii collapse to a semicircle. */
 .arch { border-radius: 100vw 100vw var(--radius) var(--radius); }
 
