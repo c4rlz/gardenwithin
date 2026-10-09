@@ -1,0 +1,14 @@
+---
+import FieldNotesPage from '../../../components/FieldNotesPage.astro';
+import { getPostPage } from '../../../lib/posts';
+
+// Page 1 is /blog itself, so only pages 2+ are built here.
+export async function getStaticPaths() {
+  const { last } = await getPostPage(1);
+  return Array.from({ length: last - 1 }, (_, i) => ({ params: { page: String(i + 2) } }));
+}
+
+const current = Number(Astro.params.page);
+---
+
+<FieldNotesPage current={current} />

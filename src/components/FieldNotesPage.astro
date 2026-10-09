@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import PostGrid from './PostGrid.astro';
+import { site } from '../content/site';
+import { blogPageUrl, getPostPage } from '../lib/posts';
+
+interface Props {
+  current: number;
+}
+
+const { posts, current, last } = await getPostPage(Astro.props.current);
+const pages = Array.from({ length: last }, (_, i) => i + 1);
+---
+
+<Base title={current === 1 ? 'Field Notes' : `Field Notes, page ${current}`} description={site.home.notes.body[0]}>
+  <div class="wrap">
+    <header class="intro">
+      <p class="eyebrow">{current === 1 ? 'Writing' : `Page ${current} of ${last}`}</p>
+      <h1>Field Notes</h1>
+      {current === 1 && site.home.notes.body.map((p) => <p>{p}</p>)}
+    </header>
+    <PostGrid posts={posts} />
+    {
+      last > 1 && (
+        <nav class="pagination" aria-label="Field Notes pages">
+          {current > 1 ? <a href={blogPageUrl(current - 1)} rel="prev">← Newer</a> : <span />}
+          <ol>
+            {pages.map((n) => (
+              <li>
+                <a href={blogPageUrl(n)} aria-current={n === current ? 'page' : undefined}>{n}</a>
+              </li>
+            ))}
+          </ol>
+          {current < last ? <a href={blogPageUrl(current + 1)} rel="next">Older →</a> : <span />}
+        </nav>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .intro { max-width: var(--measure); margin: 0 auto; padding: clamp(1rem, 3vw, 2.5rem) 0 clamp(3rem, 6vw, 4.5rem); text-align: center; }
+  .intro p { color: var(--muted); }
+  .pagination {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-top: clamp(3.5rem, 8vw, 5rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .pagination a { color: var(--muted); text-decoration: none; }
+  .pagination a:hover { color: var(--text); }
+  .pagination [rel='next'] { justify-self: end; }
+  ol { display: flex; gap: 1.25rem; list-style: none; margin: 0; padding: 0; }
+  ol a { padding-bottom: 0.3rem; border-bottom: 1px solid transparent; }
+  ol a[aria-current='page'] { color: var(--text); border-bottom-color: var(--terracotta); }
+</style>
