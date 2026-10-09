@@ -4,7 +4,7 @@ date: 2026-10-09
 description: This week, without my asking, the theme became release. A few
   thoughts on paradox, loss, and slowing down enough to feel it.
 cover: ../../assets/blog/img5118.jpeg
-draft: true
+draft: false
 ---
 We are in Libra season, and I think the first thing that comes to mind for most with Libra is the scale. The scale helps us to find balance. To discern what we need to add and remove from our lives in order to find balance.
 
