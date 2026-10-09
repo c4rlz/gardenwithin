@@ -75,7 +75,7 @@ export const site = {
     title: 'Work with me',
     lede: 'For people in a season of change who are ready to stop overriding themselves, and to build days that feel rooted, spacious, and true.',
     body: [
-      'We meet one-on-one over video, every two weeks. Each session begins by slowing down and noticing what’s alive for you right now. From there, we gently untangle what you’re carrying and find one small, doable step for the season you’re in. Between sessions, you’ll have a simple reflection practice, shaped around who you are and what you need. No giant plan for reinventing your life. Just steady tending, one step at a time.',
+      'Each session begins by slowing down and noticing what’s alive for you right now. From there, we gently untangle what you’re carrying and find one small, doable step for the season you’re in. Between sessions, you’ll have a simple reflection practice, shaped around who you are and what you need. No giant plan for reinventing your life. Just steady tending, one step at a time.',
       'This is a good fit if you’re a dreamer who struggles to bring your ideas down to Earth, if you’re moving through a layoff, burnout or a big transition, or if you’ve spent years pushing past what your body is asking for. It isn’t therapy or medical care, and it isn’t a productivity program. If you’re looking for a quick fix or someone to keep you hustling, I’m probably not your person.',
     ],
     call: {
