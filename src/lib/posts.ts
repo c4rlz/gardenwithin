@@ -24,3 +24,11 @@ export async function getPostPage(current: number) {
   const last = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
   return { posts: posts.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE), current, last };
 }
+
+/** Card photo settings, shared so a post page can reuse the exact files the card already loaded. */
+export const cardImage = { widths: [400, 800], width: 800, quality: 70, sizes: '(min-width: 60rem) 30vw, 90vw' };
+
+/** Pairs a post's card photo with its cover so the browser can morph one into the other. */
+export function coverTransitionName(id: string) {
+  return `cover-${id}`;
+}

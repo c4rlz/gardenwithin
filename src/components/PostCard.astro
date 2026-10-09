@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../lib/posts';
+import { cardImage, coverTransitionName, formatDate } from '../lib/posts';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -12,8 +12,8 @@ const { title, date, description, cover, coverAlt } = post.data;
 ---
 
 <article class="card">
-  <a href={`/blog/${post.id}`} class="cover" tabindex="-1" aria-hidden="true">
-    <Image src={cover} alt={coverAlt} widths={[400, 800]} width={800} quality={70} sizes="(min-width: 60rem) 30vw, 90vw" class="photo" />
+  <a href={`/blog/${post.id}`} class="cover" tabindex="-1" aria-hidden="true" style={`view-transition-name: ${coverTransitionName(post.id)}`}>
+    <Image src={cover} alt={coverAlt} {...cardImage} class="photo" />
   </a>
   <p class="eyebrow"><time datetime={date.toISOString()}>{formatDate(date)}</time></p>
   <h3><a href={`/blog/${post.id}`}>{title}</a></h3>
@@ -24,7 +24,7 @@ const { title, date, description, cover, coverAlt } = post.data;
   .card h3 { margin: 0 0 0.4em; font-size: 1.65rem; }
   .card h3 a { color: var(--text); text-decoration: none; }
   .card h3 a:hover { text-decoration: underline; text-decoration-color: var(--terracotta); }
-  .cover { display: block; margin-bottom: 1.25rem; overflow: hidden; border-radius: var(--radius); }
+  .cover { display: block; margin-bottom: 1.25rem; overflow: hidden; border-radius: var(--radius); view-transition-class: post-cover; }
   .cover :global(img) { aspect-ratio: 4 / 5; transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1); }
   .card:hover .cover :global(img) { transform: scale(1.04); }
   .card p:last-child { color: var(--muted); font-size: 0.97em; margin: 0; }
