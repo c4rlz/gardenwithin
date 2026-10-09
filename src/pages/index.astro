@@ -9,30 +9,30 @@ import about from '../assets/home-about.jpg';
 import signoff from '../assets/home-signoff.png';
 
 const { home } = site;
-const latest = (await getPosts()).slice(0, 4);
+const latest = (await getPosts()).slice(0, 2);
 ---
 
 <Base>
-  <section class="hero">
-    <Image src={hero} alt="" widths={[800, 1600, 2000]} width={2000} quality={70} sizes="100vw" class="hero-img" loading="eager" />
-    <div class="prose hero-text">
+  <section class="section wrap split hero">
+    <div>
       <h1>{home.title}</h1>
       <p class="lede">{home.lede}</p>
       {home.intro.map((p) => <p>{p}</p>)}
       <a class="button" href="/blog">Read the Field Notes</a>
     </div>
+    <Image src={hero} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 50vw, 90vw" class="photo hero-img" loading="eager" />
   </section>
 
-  <section class="section wrap">
+  <section class="section wrap split notes">
     <div class="notes-intro">
       <h2>{home.notes.title}</h2>
       {home.notes.body.map((p) => <p>{p}</p>)}
+      <a class="button" href="/blog">Read the Field Notes</a>
     </div>
     <PostGrid posts={latest} />
-    <p class="more"><a class="button" href="/blog">Read the Field Notes</a></p>
   </section>
 
-  <section class="section wrap about">
+  <section class="section wrap split about">
     <Image src={about} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo" />
     <div>
       <h2>{home.about.title}</h2>
@@ -43,14 +43,13 @@ const latest = (await getPosts()).slice(0, 4);
 </Base>
 
 <style>
-  .hero-img { width: 100%; height: clamp(16rem, 45vw, 32rem); object-fit: cover; }
-  .hero-text { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
-  .notes-intro { max-width: var(--measure); margin-bottom: 3rem; }
-  .notes-intro h2 { margin-top: 0; }
-  .more { margin-top: 3rem; text-align: center; }
-  .about { display: grid; gap: 2rem 4rem; align-items: center; }
-  .about h2 { margin-top: 0; }
+  .split { display: grid; gap: 2.5rem 4rem; align-items: center; }
+  .split h1, .split h2 { margin-top: 0; }
+  .hero-img { aspect-ratio: 7 / 8; }
+  .notes-intro { max-width: 26rem; }
   @media (min-width: 52rem) {
-    .about { grid-template-columns: 2fr 3fr; }
+    .hero { grid-template-columns: 1fr 1fr; }
+    .notes { grid-template-columns: 2fr 3fr; }
+    .about { grid-template-columns: 1fr 1fr; }
   }
 </style>
