@@ -73,10 +73,10 @@ export const site = {
   // New page for launch. [Bracketed] text is placeholder for Carly to replace.
   workWithMe: {
     title: 'Work with me',
-    lede: '[One sentence on who this is for and what changes for them.]',
+    lede: 'For people in a season of change who are ready to stop overriding themselves, and to build days that feel rooted, spacious, and true.',
     body: [
-      '[What working together looks like: the format, the rhythm, how a session feels.]',
-      '[Who it’s a good fit for, and who it isn’t.]',
+      'We meet one-on-one over video, every two weeks. Each session begins by slowing down and noticing what’s alive for you right now. From there, we gently untangle what you’re carrying and find one small, doable step for the season you’re in. Between sessions, you’ll have simple reflection practices, the same Daily Seeds, Weekly Roots and Blossoms I use myself. No giant plan for reinventing your life. Just steady tending, one step at a time.',
+      'This is a good fit if you’re a dreamer who struggles to bring your ideas down to Earth, if you’re moving through a layoff, burnout or a big transition, or if you’ve spent years pushing past what your body is asking for. It isn’t therapy or medical care, and it isn’t a productivity program. If you’re looking for a quick fix or someone to keep you hustling, I’m probably not your person.',
     ],
     call: {
       title: 'A free 15-minute call',
