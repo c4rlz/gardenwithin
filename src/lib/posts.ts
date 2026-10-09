@@ -26,7 +26,7 @@ export async function getPostPage(current: number) {
 }
 
 /** Card photo settings, shared so a post page can reuse the exact files the card already loaded. */
-export const cardImage = { widths: [400, 800], width: 800, quality: 70, sizes: '(min-width: 60rem) 30vw, 90vw' };
+export const cardImage = { widths: [400, 600, 800], width: 800, height: 1000, fit: 'cover' as const, quality: 62, sizes: '(min-width: 60rem) 30vw, 90vw' };
 
 /** Pairs a post's card photo with its cover so the browser can morph one into the other. */
 export function coverTransitionName(id: string) {

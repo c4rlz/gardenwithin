@@ -10,7 +10,7 @@ const { posts } = Astro.props;
 ---
 
 <div class="grid">
-  {posts.map((post) => <PostCard post={post} />)}
+  {posts.map((post, index) => <PostCard post={post} index={index} />)}
 </div>
 
 <style>

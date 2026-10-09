@@ -20,7 +20,8 @@ const ogImage = await getImage({ src: cover, width: 1200, format: 'jpg', quality
 // The card's own photo files (likely already cached from the Field Notes list) show
 // instantly behind the cover while the full-size cover loads and fades in on top.
 const card = await getImage({ src: cover, ...cardImage });
-const placeholder = `image-set(${card.srcSet.values.map((v, i) => `url("${v.url}") ${i + 1}x`).join(', ')})`;
+const cardUrl = (w: string) => card.srcSet.values.find((v) => v.descriptor === w)?.url ?? card.src;
+const placeholder = `image-set(url("${cardUrl('400w')}") 1x, url("${cardUrl('600w')}") 2x)`;
 ---
 
 <Base title={title} description={description} image={ogImage.src}>

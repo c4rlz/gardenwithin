@@ -1,18 +1,22 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { cardImage, coverTransitionName, formatDate } from '../lib/posts';
 
 interface Props {
   post: CollectionEntry<'blog'>;
+  /** Position in the grid, for the staggered fade-up. */
+  index?: number;
 }
 
-const { post } = Astro.props;
+const { post, index = 0 } = Astro.props;
 const { title, date, description, cover, coverAlt } = post.data;
+// A tiny version of the photo, blurred as a placeholder while the real one loads.
+const tiny = await getImage({ src: cover, width: 24, height: 30, fit: 'cover', format: 'webp', quality: 50 });
 ---
 
-<article class="card">
-  <a href={`/blog/${post.id}`} class="cover" tabindex="-1" aria-hidden="true" style={`view-transition-name: ${coverTransitionName(post.id)}`}>
+<article class="card" style={`--i: ${Math.min(index, 8)}`}>
+  <a href={`/blog/${post.id}`} class="cover" tabindex="-1" aria-hidden="true" style={`view-transition-name: ${coverTransitionName(post.id)}; --tiny: url("${tiny.src}")`}>
     <Image src={cover} alt={coverAlt} {...cardImage} class="photo" />
   </a>
   <p class="eyebrow"><time datetime={date.toISOString()}>{formatDate(date)}</time></p>
@@ -24,11 +28,35 @@ const { title, date, description, cover, coverAlt } = post.data;
   .card h3 { margin: 0 0 0.4em; font-size: 1.65rem; }
   .card h3 a { color: var(--text); text-decoration: none; }
   .card h3 a:hover { text-decoration: underline; text-decoration-color: var(--terracotta); }
-  .cover { display: block; margin-bottom: 1.25rem; overflow: hidden; border-radius: var(--radius); view-transition-class: post-cover; }
-  .cover :global(img) { aspect-ratio: 4 / 5; transition: transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1); }
+  .card { animation: rise 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) both; animation-delay: calc(var(--i) * 80ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } }
+  .cover {
+    position: relative;
+    display: block;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--surface);
+    view-transition-class: post-cover;
+  }
+  /* Blurred preview of the photo, sharpened by the real photo fading in on top. */
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    background: var(--tiny) center / cover;
+    filter: blur(14px);
+  }
+  .cover :global(img) {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: none;
+    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
   .card:hover .cover :global(img) { transform: scale(1.04); }
   .card p:last-child { color: var(--muted); font-size: 0.97em; margin: 0; }
   @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
     .cover :global(img) { transition: none; }
   }
 </style>
