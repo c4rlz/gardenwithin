@@ -3,7 +3,7 @@
 
 export const site = {
   name: 'The Garden Within',
-  author: 'Carly Ewasiuk',
+  author: 'Carly',
   description:
     'Field notes on living slower, in rhythm with my inner seasons, and in conversation with my body.',
   instagram: 'https://instagram.com/being.radiant',
