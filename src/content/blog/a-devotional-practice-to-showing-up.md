@@ -1,9 +1,8 @@
 ---
 title: "A devotional practice to showing up"
-slug: a-devotional-practice-to-showing-up
 date: 2026-09-22
 description: "The daily steps I’m taking to bring my dreams down to Earth."
-cover: ./cover.jpg
+cover: ../../assets/blog/a-devotional-practice-to-showing-up.jpg
 coverAlt: ""
 ---
 

@@ -1,9 +1,8 @@
 ---
 title: "Fully receiving the gift of a layoff"
-slug: fully-receiving-the-gift-of-a-layoff
 date: 2026-09-28
 description: "What if, instead of immediately trying to recreate what I had, I gave myself space to discover what I actually want next?"
-cover: ./cover.jpg
+cover: ../../assets/blog/fully-receiving-the-gift-of-a-layoff.jpg
 coverAlt: ""
 ---
 

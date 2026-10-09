@@ -1,9 +1,8 @@
 ---
 title: "Living my ideal days"
-slug: living-my-ideal-days
 date: 2026-09-30
 description: "No giant plan for reinventing my life. Just a commitment to keep showing up in each moment."
-cover: ./cover.jpeg
+cover: ../../assets/blog/living-my-ideal-days.jpeg
 coverAlt: ""
 ---
 

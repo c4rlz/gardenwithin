@@ -2,14 +2,13 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Field Notes. Each post lives in src/content/blog/<slug>/index.md with its images beside it.
-// `slug` is set explicitly so URLs match the old Squarespace ones (/blog/<slug>).
+// Field Notes, edited in Pages CMS (.pages.yml). Each post is src/content/blog/<slug>.md and its
+// filename is its URL (/blog/<slug>), matching the old Squarespace slugs. Images live in src/assets/blog/.
 const blog = defineCollection({
-  loader: glob({ pattern: '**/index.md', base: './src/content/blog' }),
+  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      slug: z.string(),
       date: z.coerce.date(),
       description: z.string(),
       cover: image(),

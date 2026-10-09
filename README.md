@@ -17,35 +17,39 @@ npm run preview   # serve the built site
 
 ## Write a Field Note
 
-Add a folder under `src/content/blog/` named for the URL slug, with an `index.md` and the cover photo beside it:
+Posts are edited in [Pages CMS](https://app.pagescms.org): sign in with GitHub, open this repo, then **Field Notes → Add an entry**. Saving commits to `main` and Netlify rebuilds the site in a minute or two. Tick **Draft** to save without publishing.
+
+The title sets the URL when a post is created ("My new note" → `/blog/my-new-note`); changing the title later keeps the URL. The editor's fields and folders are defined in `.pages.yml`.
+
+Posts are plain Markdown, so editing the files directly works too:
 
 ```md
 ---
 title: "A new note"
-slug: a-new-note          # becomes /blog/a-new-note
 date: 2026-10-08
 description: "One or two sentences for the card and search results."
-cover: ./cover.jpg
+cover: ../../assets/blog/a-new-note.jpg
 coverAlt: "What's in the photo"
-draft: true               # remove to publish
+draft: true
 ---
 
-Write here. Images: ![alt text](./another-photo.jpg)
+Write here. Images: ![alt text](../../assets/blog/another-photo.jpg)
 ```
 
-Drop in full-size photos; the build resizes and compresses them.
+Full-size photos are fine; the build resizes and compresses them.
 
 ## Where things live
 
 | Path | What |
 | --- | --- |
 | `src/content/site.ts` | All page copy and links. Edit words here. |
-| `src/content/blog/` | Field Notes, one folder per post |
+| `src/content/blog/` | Field Notes, one Markdown file per post (filename = URL) |
+| `src/assets/blog/` | Field Notes photos (Pages CMS uploads land here) |
+| `.pages.yml` | Pages CMS editor setup |
 | `src/pages/` | One file per page; `blog/[slug].astro` renders posts |
 | `src/styles/global.css` | Palette (from the old Squarespace theme), type, light and dark mode |
 | `src/assets/` | Photos used on pages |
 | `public/_redirects` | Old Squarespace URLs that moved (post URLs didn't) |
-| `scripts/import-squarespace.mjs` | One-off import of posts from the live Squarespace site |
 
 ## Deploy
 

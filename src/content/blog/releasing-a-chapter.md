@@ -1,9 +1,8 @@
 ---
 title: "Releasing a chapter"
-slug: releasing-a-chapter
 date: 2026-10-05
 description: "A day of release and closure, and the start of a new chapter. I'm focusing on cultivating my ideal days, starting with a weekly routine that follows the moon, my cycle, and the planets."
-cover: ./cover.jpeg
+cover: ../../assets/blog/releasing-a-chapter.jpeg
 coverAlt: ""
 ---
 

@@ -1,9 +1,8 @@
 ---
 title: "Grief"
-slug: grief
 date: 2026-07-15
 description: "One of the great beauties of Life is that it is temporary, and this week I am learning the lesson of fully meeting Grief."
-cover: ./cover.jpg
+cover: ../../assets/blog/grief.jpg
 coverAlt: ""
 ---
 

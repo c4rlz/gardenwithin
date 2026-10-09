@@ -1,9 +1,8 @@
 ---
 title: "One step at a time"
-slug: creating-for-the-sake-of-creation
 date: 2026-07-11
 description: "I've wanted a blog for as long as I can remember. Now the container is ready and waiting, and I'm faced with the real question: what the heck do I write about?"
-cover: ./cover.jpg
+cover: ../../assets/blog/creating-for-the-sake-of-creation.jpg
 coverAlt: ""
 ---
 

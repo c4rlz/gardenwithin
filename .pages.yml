@@ -1,0 +1,63 @@
+# Pages CMS (https://app.pagescms.org): the editor for Field Notes.
+# Saving in Pages CMS commits to this repo; Netlify rebuilds the site.
+
+media:
+  - name: blog
+    label: Field Notes photos
+    input: src/assets/blog
+    # Written into posts relative to src/content/blog/, so Astro can resize the images.
+    output: ../../assets/blog
+    categories: [image]
+    rename: safe
+
+content:
+  - name: blog
+    label: Field Notes
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    # The filename is the URL: "My new note" → /blog/my-new-note. Renaming the title later keeps the URL.
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields: [title, date, draft]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: description
+        label: Description
+        description: One or two sentences for the post card and search results.
+        type: text
+        required: true
+      - name: cover
+        label: Cover photo
+        type: image
+        required: true
+        options:
+          media: blog
+      - name: coverAlt
+        label: Cover photo description
+        description: What's in the photo, for people using screen readers.
+        type: string
+      - name: draft
+        label: Draft (hidden from the site)
+        type: boolean
+        default: false
+      - name: body
+        label: Post
+        type: rich-text
+        options:
+          format: markdown
+          media: blog

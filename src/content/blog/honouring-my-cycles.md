@@ -1,9 +1,8 @@
 ---
 title: "Coming home to myself"
-slug: honouring-my-cycles
 date: 2026-05-18
 description: "Over the past few years, I have been learning what it means for a body to feel safe enough to bloom."
-cover: ./cover.jpg
+cover: ../../assets/blog/honouring-my-cycles.jpg
 coverAlt: ""
 ---
 
@@ -33,4 +32,4 @@ I am excited to fully meet myself.
 
 Unarmoured and whole.
 
-![Xo, C](./img_0014.png)
+![Xo, C](../../assets/blog/xo-c.png)

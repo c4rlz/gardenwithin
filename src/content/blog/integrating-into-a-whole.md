@@ -1,9 +1,8 @@
 ---
 title: "Integrating into a whole"
-slug: integrating-into-a-whole
 date: 2026-10-06
 description: "I've experienced so much magic and synchronicity in my personal life, and very little in my professional life. As I wrote this, I finally understood why."
-cover: ./cover.jpeg
+cover: ../../assets/blog/integrating-into-a-whole.jpeg
 coverAlt: ""
 ---
 
