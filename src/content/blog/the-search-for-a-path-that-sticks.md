@@ -2,7 +2,7 @@
 title: The search for a path that sticks
 date: 2026-10-14
 description: On rejection emails, one-sided conversations, and being proud of myself anyway.
-cover: ../../assets/blog/img5148.jpeg
+cover: ../../assets/blog/the-search-for-a-path-that-sticks.jpeg
 coverAlt: A tree with steps on it
 draft: false
 ---
