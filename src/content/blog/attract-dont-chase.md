@@ -3,7 +3,7 @@ title: Attract, don't chase
 date: 2026-10-15
 description: I've done the vision boards and the worksheets. What I hadn't done
   was let the people who know me actually see me.
-cover: ../../assets/blog/img4890.jpeg
+cover: ../../assets/blog/attract-dont-chase.jpeg
 draft: false
 ---
 That saying, "everything happens for a reason". I have always believed it.
