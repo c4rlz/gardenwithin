@@ -2,7 +2,7 @@
 title: A love note to myself
 date: 2026-10-21
 description: This is written for the days when I don't feel so good
-cover: ../../assets/blog/img5178.jpeg
+cover: ../../assets/blog/a-love-note-to-myself.jpeg
 draft: false
 ---
 Dear Future Self,
