@@ -33,3 +33,4 @@ The seventh most important thing, remember your calling. Remember why you are he
 
 I could go on and on, but I will stop here. My final remark to you is this: the phase where you dull your light to fit in is over. It was serving no one, especially not you. The magic in your existence will multiply as you learn to honour yourself in every moment. And so, if you ever find yourself feeling lacklustre, I invite you to remember these important things that could offer some direction to get you back. 
 
+Lots of love, 
