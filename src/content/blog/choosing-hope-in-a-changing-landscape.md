@@ -4,7 +4,7 @@ date: 2026-10-25
 description: "BC has elected its first Conservative government in nearly a
   century. Here’s where I’m landing: open-minded, paying attention, and turning
   toward my neighbours."
-cover: ../../assets/blog/img-5146.jpg
+cover: ../../assets/blog/choosing-hope-in-a-changing-landscape.jpg
 coverAlt: A pathway through a changing landscape
 draft: false
 ---
