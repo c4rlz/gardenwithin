@@ -9,5 +9,7 @@
     // Pages are blog.html, blog/<slug>.html… served as /blog, /blog/<slug> (see astro.config.mjs).
     "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page"
-  }
+  },
+  // Lets Cloudflare build a preview of each pull request (`wrangler preview`); nothing extra to set.
+  "previews": {}
 }

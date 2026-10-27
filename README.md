@@ -2,7 +2,7 @@
 
 The website for [gardenwithin.ca](https://gardenwithin.ca): field notes on living in rhythm with my inner seasons, plus tools and a way to work with me. Moved off Squarespace in 2026.
 
-Built with [Astro](https://astro.build) and plain CSS. The only JavaScript is a few lines that fade photos in as they load; page transitions use the browser's built-in view transitions.
+Built with [Astro](https://astro.build) and plain CSS. The only JavaScript is a few lines that fade photos in as they load, and the contact form sending in the background; page transitions use the browser's built-in view transitions.
 
 ## Run it
 
