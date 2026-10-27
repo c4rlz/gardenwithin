@@ -88,7 +88,7 @@ export const site = {
   contact: {
     title: 'I would love to hear from you ♡',
     // Web3Forms access key (web3forms.com): messages are emailed to the address it was made with. Safe to be public.
-    formKey: '',
+    formKey: '7b9a867f-dcad-4c99-b803-1e0a76e5742f',
     thanks: {
       title: 'Thank you ♡',
       body: 'Your note is on its way to me. I’ll write back soon.',
