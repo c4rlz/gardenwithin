@@ -3,7 +3,8 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://gardenwithin.ca',
-  integrations: [sitemap()],
+  // The contact form's thank-you page isn't something to land on from search.
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/contact/thanks') })],
   // Build /blog as blog.html (not blog/index.html) so Cloudflare serves /blog directly
   // instead of redirecting to /blog/, and post URLs match the old Squarespace ones.
   trailingSlash: 'never',

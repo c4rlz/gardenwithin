@@ -25,7 +25,7 @@ const cardUrl = (w: string) => card.srcSet.values.find((v) => v.descriptor === w
 const placeholder = `image-set(url("${cardUrl('400w')}") 1x, url("${cardUrl('600w')}") 2x)`;
 ---
 
-<Base title={title} description={description} image={ogImage.src}>
+<Base title={title} description={description} image={ogImage.src} published={date}>
   <article>
     <header class="prose head">
       <p class="eyebrow"><time datetime={date.toISOString()}>{formatDate(date)}</time></p>
