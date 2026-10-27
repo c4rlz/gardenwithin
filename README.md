@@ -38,6 +38,8 @@ Write here. Images: ![alt text](../../assets/blog/another-photo.jpg)
 
 Full-size photos are fine. After each save, a GitHub Action (`.github/workflows/tidy-photos.yml`) names a post's photos after it (`my-new-note.jpg` for the cover, then `my-new-note-2.jpg`… for photos in the post), updates the post to match, and shrinks originals to 2400px on the long side. If Pages CMS then says the post changed, reload it. To run the same tidy-up locally: `npm run photos`. The build makes the small compressed copies visitors actually download.
 
+To get photos ready before uploading (HEIC, PNG, WebP… → JPEG, upright, 2400px, compressed, location data stripped): `npm run compress -- ~/Downloads/IMG_5118.HEIC ~/Desktop/some-folder`. Copies land in `./compressed`; originals aren't touched. Options: `-o <dir>`, `-m <px>`, `-q <quality>`. Run `npm link` once in this folder to use it from anywhere as `garden-compress`.
+
 Every post ends with the handwritten "Xo, C" automatically; no need to add it.
 
 ## Where things live
