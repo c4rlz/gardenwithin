@@ -1,5 +1,5 @@
 # Pages CMS (https://app.pagescms.org): the editor for Field Notes.
-# Saving in Pages CMS commits to this repo; Netlify rebuilds the site.
+# Saving in Pages CMS commits to this repo; Cloudflare rebuilds the site.
 
 media:
   - name: blog
