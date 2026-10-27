@@ -1,4 +1,3 @@
 # Old Squarespace URLs → new homes. Post URLs are unchanged (/blog/<slug>).
-# The old RSS feed (/blog?format=rss) is redirected in worker/index.js; this file can't match on ?format.
 /home              /          301
 /cart              /          301

@@ -55,7 +55,7 @@ Every post ends with the handwritten "Xo, C" automatically; no need to add it.
 | `src/styles/global.css` | Palette and fonts (from the old Squarespace theme), buttons, photo fade-in, page transitions |
 | `src/assets/` | Photos used on pages |
 | `public/_redirects` | Old Squarespace URLs that moved (post URLs didn't) |
-| `wrangler.jsonc`, `worker/index.js` | Cloudflare hosting setup, and the old RSS-feed redirect `_redirects` can't do |
+| `wrangler.jsonc` | Cloudflare hosting setup |
 
 ## Deploy
 
