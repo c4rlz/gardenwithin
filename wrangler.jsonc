@@ -1,0 +1,13 @@
+// Cloudflare Workers: serves the built site from dist/. Every push to main rebuilds and deploys it
+// (Workers Builds, connected to this repo in the Cloudflare dashboard).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gardenwithin",
+  "compatibility_date": "2026-10-27",
+  "assets": {
+    "directory": "./dist",
+    // Pages are blog.html, blog/<slug>.html… served as /blog, /blog/<slug> (see astro.config.mjs).
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

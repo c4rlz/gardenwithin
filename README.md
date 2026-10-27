@@ -17,7 +17,7 @@ npm run preview   # serve the built site
 
 ## Write a Field Note
 
-Posts are edited in [Pages CMS](https://app.pagescms.org): sign in with GitHub, open this repo, then **Field Notes → Add an entry**. Saving commits to `main` and Netlify rebuilds the site in a minute or two. Tick **Draft** to save without publishing.
+Posts are edited in [Pages CMS](https://app.pagescms.org): sign in with GitHub, open this repo, then **Field Notes → Add an entry**. Saving commits to `main` and Cloudflare rebuilds the site in a minute or two. Tick **Draft** to save without publishing.
 
 The title sets the URL when a post is created ("My new note" → `/blog/my-new-note`); changing the title later keeps the URL. The editor's fields and folders are defined in `.pages.yml`.
 
@@ -38,6 +38,8 @@ Write here. Images: ![alt text](../../assets/blog/another-photo.jpg)
 
 Full-size photos are fine. After each save, a GitHub Action (`.github/workflows/tidy-photos.yml`) names a post's photos after it (`my-new-note.jpg` for the cover, then `my-new-note-2.jpg`… for photos in the post), updates the post to match, and shrinks originals to 2400px on the long side. If Pages CMS then says the post changed, reload it. To run the same tidy-up locally: `npm run photos`. The build makes the small compressed copies visitors actually download.
 
+To get photos ready before uploading (HEIC, PNG, WebP… → JPEG, upright, 2400px, compressed, location data stripped): `npm run compress -- ~/Downloads/IMG_5118.HEIC ~/Desktop/some-folder`. Copies land in `./compressed`; originals aren't touched. Options: `-o <dir>`, `-m <px>`, `-q <quality>`. Run `npm link` once in this folder to use it from anywhere as `garden-compress`.
+
 Every post ends with the handwritten "Xo, C" automatically; no need to add it.
 
 ## Where things live
@@ -53,11 +55,12 @@ Every post ends with the handwritten "Xo, C" automatically; no need to add it.
 | `src/styles/global.css` | Palette and fonts (from the old Squarespace theme), buttons, photo fade-in, page transitions |
 | `src/assets/` | Photos used on pages |
 | `public/_redirects` | Old Squarespace URLs that moved (post URLs didn't) |
+| `wrangler.jsonc` | Cloudflare hosting setup |
 
 ## Deploy
 
-Live at [gardenwithin.netlify.app](https://gardenwithin.netlify.app). Every push to `main` rebuilds and publishes the site; the **Deploys** tab in Netlify has build logs and one-click rollback.
+Hosted on [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/) (free plan) at [gardenwithin.ca](https://gardenwithin.ca). Every push to `main` rebuilds and publishes the site; the Worker's **Deployments** tab in the Cloudflare dashboard has build logs and rollback.
 
-`netlify.toml` sets the build command and output folder, and Netlify reads `.nvmrc` for the Node version. Pages build as `blog.html`-style files so URLs have no trailing slash, matching the old Squarespace ones.
+The Worker (**Workers & Pages → gardenwithin**) is connected to this GitHub repo with build command `npm run build` and deploy command `npx wrangler deploy`. `wrangler.jsonc` points it at `dist/`; the build reads `.nvmrc` for the Node version (or set a `NODE_VERSION` build variable). Pages build as `blog.html`-style files so URLs have no trailing slash, matching the old Squarespace ones.
 
-The contact form uses Netlify Forms, so it only works on Netlify: turn on form detection and email notifications under **Forms** in the Netlify dashboard.
+The contact form posts to [Web3Forms](https://web3forms.com), which emails each message; its access key is `contact.formKey` in `src/content/site.ts`.

@@ -10,10 +10,13 @@ import photo from '../../assets/contact.jpg';
     <Image src={photo} alt="" widths={[600, 1200]} width={1200} quality={70} sizes="(min-width: 52rem) 40vw, 90vw" class="photo arch" />
     <div>
       <h1>{site.contact.title}</h1>
-      <!-- Netlify Forms: submissions show in the Netlify dashboard and can be emailed on. -->
-      <form name="contact" method="POST" action="/contact/thanks" data-netlify="true" netlify-honeypot="company">
-        <input type="hidden" name="form-name" value="contact" />
-        <p class="hidden"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+      <!-- Web3Forms emails each message (reply goes to the sender's email), then sends them to the thanks page. -->
+      <form method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value={site.contact.formKey} />
+        <input type="hidden" name="subject" value="New message from gardenwithin.ca" />
+        <input type="hidden" name="from_name" value="Garden Within" />
+        <input type="hidden" name="redirect" value={new URL('/contact/thanks', Astro.site).href} />
+        <p class="hidden"><label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label></p>
         <label>Name <input name="name" autocomplete="name" required /></label>
         <label>Email <input type="email" name="email" autocomplete="email" required /></label>
         <label>Message <textarea name="message" rows="6" required></textarea></label>
