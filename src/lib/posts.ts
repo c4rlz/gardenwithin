@@ -1,9 +1,18 @@
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import defaultCover from '../assets/home-hero.jpg';
+import { firstSentence } from './excerpt';
 
-/** Published Field Notes, newest first. */
+/** Published Field Notes, newest first, with a cover and description filled in where they were left empty. */
 export async function getPosts() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return posts.map(withFallbacks).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+}
+
+export type Post = ReturnType<typeof withFallbacks>;
+
+function withFallbacks(post: CollectionEntry<'blog'>) {
+  const { cover = defaultCover, description = firstSentence(post.body ?? '') } = post.data;
+  return { ...post, data: { ...post.data, cover, description } };
 }
 
 export function formatDate(date: Date) {

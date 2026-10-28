@@ -11,13 +11,16 @@ Needs Node 22.12+; developed on Node 26 (`nvm use` picks it up from `.nvmrc`).
 ```sh
 npm install
 npm run dev       # http://localhost:4321
-npm run build     # type-check, then build to dist/
+npm run build     # check posts, type-check, build to dist/, then check links
 npm run preview   # serve the built site
+npm test          # tests for the post checks, description fallback and photo tidy-up
 ```
 
 ## Write a Field Note
 
-Posts are edited in [Pages CMS](https://app.pagescms.org): sign in with GitHub, open this repo, then **Field Notes → Add an entry**. Saving commits to `main` and Cloudflare rebuilds the site in a minute or two. Tick **Draft** to save without publishing.
+Posts are edited in [Pages CMS](https://app.pagescms.org): sign in with GitHub, open this repo, then **Field Notes → Add an entry**. Saving commits to `main` and Cloudflare rebuilds the site in a minute or two. Tick **Draft** to save without publishing. Cover photo and description can be left empty: a post without a cover uses the ferns from the home page, and one without a description uses its first sentence.
+
+If a save would break the site, it doesn't go live (the site stays as it was) and GitHub emails you what's wrong, e.g. "grief.md uses the photo x.jpg, which isn't in src/assets/blog" or "/blog/grief links to /blog/greif, which doesn't exist". Fix it in Pages CMS and save again. The checks: every photo a post uses exists, published posts have writing in them, and every link to a page on the site leads somewhere (`scripts/check-posts.mjs`, `scripts/check-links.mjs`).
 
 The title sets the URL when a post is created ("My new note" → `/blog/my-new-note`); changing the title later keeps the URL. The editor's fields and folders are defined in `.pages.yml`.
 

@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { Post } from '../lib/posts';
 import PostCard from './PostCard.astro';
 
 interface Props {
-  posts: CollectionEntry<'blog'>[];
+  posts: Post[];
 }
 
 const { posts } = Astro.props;
