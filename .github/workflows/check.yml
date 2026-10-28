@@ -1,0 +1,24 @@
+# Runs the tests and the same checks as the Cloudflare build on every save (e.g. in Pages CMS) and
+# pull request. When something fails, GitHub emails whoever made the save, naming the problem;
+# the details are under the run's "Check the site" step.
+
+name: Check the site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Check the site
+        run: npm run build

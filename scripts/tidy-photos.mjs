@@ -10,23 +10,12 @@ import { readdir, readFile, rename, stat, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
+import { photoRefs, renamePostPhotos } from './lib/photos.mjs';
 
 const POSTS = 'src/content/blog';
 const PHOTOS = 'src/assets/blog';
-const REF_PREFIX = '../../assets/blog/'; // how posts refer to photos (see .pages.yml)
 const MAX_EDGE = 2400;
 const RESIZABLE = new Set(['.jpg', '.jpeg', '.png', '.webp']);
-
-// Photo references in a post, in order: the cover first, then body images (Markdown or HTML).
-function photoRefs(markdown) {
-  const refs = [];
-  const escaped = REF_PREFIX.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
-  const cover = markdown.match(new RegExp(`^cover:\\s*["']?(${escaped}[^"'\\s]+)`, 'm'));
-  if (cover) refs.push(cover[1]);
-  const body = new RegExp(`(?:\\]\\(|src=["'])(${escaped}[^)"'\\s]+)`, 'g');
-  for (const [, ref] of markdown.matchAll(body)) if (!refs.includes(ref)) refs.push(ref);
-  return refs;
-}
 
 const posts = (await readdir(POSTS)).filter((f) => f.endsWith('.md'));
 const contents = new Map(await Promise.all(posts.map(async (f) => [f, await readFile(path.join(POSTS, f), 'utf8')])));
@@ -37,19 +26,11 @@ for (const text of contents.values()) for (const ref of photoRefs(text)) usage.s
 
 const changes = [];
 
+const exists = (name) => existsSync(path.join(PHOTOS, name));
 for (const [file, original] of contents) {
-  const slug = file.replace(/\.md$/, '');
-  let text = original;
-  photoRefs(original).forEach((ref, i) => {
-    const current = ref.slice(REF_PREFIX.length);
-    const ext = path.extname(current).toLowerCase();
-    const wanted = `${slug}${i === 0 ? '' : `-${i + 1}`}${ext}`;
-    if (current === wanted || usage.get(ref) > 1) return;
-    if (!existsSync(path.join(PHOTOS, current))) return console.warn(`! ${file}: ${current} is missing`);
-    if (existsSync(path.join(PHOTOS, wanted))) return console.warn(`! ${file}: ${wanted} already exists, keeping ${current}`);
-    changes.push([current, wanted]);
-    text = text.split(REF_PREFIX + current).join(REF_PREFIX + wanted);
-  });
+  const { text, renames, warnings } = renamePostPhotos(file, original, { exists, usage });
+  warnings.forEach((w) => console.warn(`! ${w}`));
+  changes.push(...renames);
   if (text !== original) await writeFile(path.join(POSTS, file), text);
 }
 

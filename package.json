@@ -10,10 +10,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "node scripts/check-posts.mjs && astro check && astro build && node scripts/check-links.mjs",
     "preview": "astro preview",
     "photos": "node scripts/tidy-photos.mjs",
-    "compress": "node scripts/compress.mjs"
+    "compress": "node scripts/compress.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -27,6 +28,7 @@
     "@astrojs/check": "^0.9.10",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3",
+    "vitest": "^5.0.5",
     "wrangler": "^4.154.0"
   }
 }
