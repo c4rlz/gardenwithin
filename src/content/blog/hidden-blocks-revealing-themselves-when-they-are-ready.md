@@ -1,6 +1,10 @@
 ---
 title: Hidden blocks revealing themselves when they are ready
 date: 2026-11-05
+description: Sometimes a rejection stings less than what it reveals. Notes on
+  fear, visibility, and the first small steps toward being seen.
+cover: ../../assets/blog/img-5200.jpg
+coverAlt: A hopeful photo of pampus grass
 draft: true
 ---
 The past week or so I've been very caught up on a particular role and company. 
