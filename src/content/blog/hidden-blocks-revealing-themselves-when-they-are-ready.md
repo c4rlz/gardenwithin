@@ -11,11 +11,9 @@ Then came the technical interview, which involves live coding in front of two pe
 
 The process of interviewing for software roles is quite typical. It's pretty elaborate with multiple rounds, testing all sorts of abilities from technical competencies to values based competencies to ensure you will make a good fit.
 
-I've participated on both sides of the interview. I know how it feels to be the assessor and the one being assessed. I know what companies tend to look for. 
+I’ve participated on both sides of the interview. I know how it feels to be the assessor and the one being assessed. I know what companies tend to look for. I know to communicate my assumptions and make sure to ask questions along the way. I know that I need to communicate my thought process out loud so that I am bringing those who are evaluating me along for the ride. The challenges these days tend to range from very abstract, theoretical problem solving to real-world applications. This one in particular was more real-world, which in theory I should have absolutely thrived in since it’s aligned with what my daily work looks like.
 
-I know to communicate my assumptions and make sure to ask questions along the way. I know that I need to communicate my thought process out loud so that I am bringing those who are evaluating me along for the ride. 
-
-The challenges these days tend to range from very abstract, theoretical problem solving to real world applications. This one in particular was more real-world which in theory I should have absolutely thrived in since it's aligned my daily work looks like. But. I. did. not.
+But. I. did. not.
 
 I left the interview immediately feeling completely vulnerable and exposed. The interviewers were super pleasant, I had a very good feeling about the company going into it (and still do post process), and the challenge was nothing extraordinary. But I gently panicked my way through it, my body feeling as though it was gearing up to run away. And sadly, this is just how it is for me.
 
