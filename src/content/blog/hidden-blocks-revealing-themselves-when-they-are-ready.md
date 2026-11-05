@@ -5,7 +5,7 @@ description: Sometimes a rejection stings less than what it reveals. Notes on
   fear, visibility, and the first small steps toward being seen.
 cover: ../../assets/blog/hidden-blocks-revealing-themselves-when-they-are-ready.jpg
 coverAlt: A hopeful photo of pampus grass
-draft: true
+draft: false
 ---
 The past week or so I've been very caught up on a particular role and company. 
 
