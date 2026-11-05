@@ -27,7 +27,9 @@ This is a pattern that doesn't just show up in interviews. It shows up in women'
 
 It's been a thing for me since I was a teenager. Before then, I loved to be in the spotlight. I'd put on performances for my parents whenever I could. I don't know exactly where it comes from, but it's highly uncomfortable, and it's limiting me. I've done my best to manage it by reducing the number of experiences I have that require this discomfort.
 
-But my life and my inner callings are all guiding me towards experiences that do involve me being witnessed and seen in front of others. My dream in life has always been building a space on a beautiful property where I can curate gatherings and circles on specific topics, which undoubtedly involves putting myself in the spotlight. I am also signed up for yoga teacher training which certainly involves being seen. 
+But my life and my inner callings are all guiding me towards experiences that do involve me being witnessed and seen in front of others. My dream in life has always been building a space on a beautiful property where I can curate gatherings and circles on specific topics, which undoubtedly involves putting myself in the spotlight. I am also signed up for yoga teacher training which certainly involves being seen. I want to be in positions where I am seen, but I find them so uncomfortable. 
+
+And, I can't help but wonder, what if instead those moments could feel fun?
 
 So, I am ready to let go of this limitation. I need to let go of this limitation. No more bending my life around it. I want to work through it, and overcome it.
 
