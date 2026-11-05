@@ -5,7 +5,7 @@ draft: true
 ---
 The past week or so I've been very caught up on a particular role and company. 
 
-The process was going smoothly, the role felt like a dream role, it ticked more boxes than I could have dreamed of. I envisioned how well that role would fit into my life. The culture, the work, the excitement.
+The process was going smoothly, the role felt like a dream role, it ticked more boxes than I could have dreamed of. I envisioned how well that role would fit into my life. The culture, the work, the excitement. It was a perfect foundation for my ideal life.
 
 Then came the technical interview, which involves live coding in front of two people. 
 
